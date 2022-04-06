@@ -29,7 +29,6 @@ public class AnagrammaDAO {
 						
 			while(rs.next()) {
 				String nome = rs.getString("nome");
-				
 				dizionario.add(nome);
 			}
 			
@@ -51,7 +50,7 @@ public class AnagrammaDAO {
 	}
 	
 	public boolean isCorretto(String s) {
-		String sql = "SELECT parola.nome FROM parola WHERE nome = ?";
+		String sql = "SELECT * FROM parola WHERE nome = ?";
 		boolean ret = false;
 		
 		try {
@@ -67,12 +66,13 @@ public class AnagrammaDAO {
 			st.close();
 			conn.close();
 			rs.close();
+			
 			return ret;
 			
 		} catch (SQLException e) {
 			System.err.println("Errore nel DAO anagramma");
 			e.printStackTrace();
-			return (Boolean) null;
+			return false;
 		}
 	}
 	

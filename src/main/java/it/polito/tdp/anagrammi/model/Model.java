@@ -1,6 +1,7 @@
 package it.polito.tdp.anagrammi.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -9,12 +10,12 @@ import it.polito.tdp.anagrammi.db.AnagrammaDAO;
 public class Model {
 	
 	private AnagrammaDAO aDAO;
-	private List<String> soluzioni;
+	private Set<String> soluzioni;
 	
 	public Model() {
 		super();
 		aDAO = new AnagrammaDAO();
-		soluzioni = new ArrayList<String>();
+		soluzioni = new HashSet<String>();
 	}
 
 	public Set<String> getDizionario() {
@@ -25,7 +26,8 @@ public class Model {
 		return aDAO.isCorretto(s);
 	}
 	
-	public List<String> anagramma(String s) {
+	public Set<String> anagramma(String s) {
+		soluzioni.clear();
 		this.anagrammaRicorsiva("", 0, s);
 		return soluzioni;
 	}

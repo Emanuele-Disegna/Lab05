@@ -9,7 +9,7 @@ public class DbConnect {
 	public static Connection getConnection() {
 		
 		try {
-			String url = "jdbc:mysql://localhost/iscritticorsi?user=root&password=root";
+			String url = "jdbc:mysql://localhost/dizionario?user=root&password=root";
 			return DriverManager.getConnection(url);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
